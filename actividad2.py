@@ -30,9 +30,12 @@ for i in medias.estation.drop_duplicates():
         data_estation_max_mediun = medias[medias["estation"].isin([i])]
 
 # print("Estacion: ", estation_max_mediun, " Media: ", aux)
-data_estation_max_mediun.hist(column="available")
-
-
-
+data_estation_max_mediun = data_estation_max_mediun[["download_date", "available"]]
+data_estation_max_mediun.set_index('download_date', inplace=True)
+data_estation_max_mediun.plot()
+data_estation_max_mediun.plot(kind="bar")
 
 plt.show()
+
+# media = estaciones.estation.median()
+# print(medias)
